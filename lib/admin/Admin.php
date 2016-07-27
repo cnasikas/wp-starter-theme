@@ -7,7 +7,7 @@ defined('ABSPATH') OR exit;
 class Admin{
 
 	protected static $instance = null;
-	protected static $createdBy = array('name' => 'roleplay.gr', 'url' => 'http://roleplay.gr/');
+	protected static $createdBy = array('name' => 'name', 'url' => 'http://site.com/');
 
 	public function __construct() {
 		//self::$autoLoader = new RLP_AutoLoader();
