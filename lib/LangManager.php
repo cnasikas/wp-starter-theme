@@ -41,7 +41,7 @@ class LangManager{
 	}
 
 	public function getLanguages(){
-		return null == self::$langProvider ? '' : self::$langProvider->getLanguages();
+		return null == self::$langProvider ? array() : self::$langProvider->getLanguages();
 	}
 
 	public function getCurrentLang(){
