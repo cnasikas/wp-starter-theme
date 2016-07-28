@@ -7,6 +7,7 @@ use App\Admin\Options;
 use App\Comments\Comments;
 use App\Menu\Menu;
 use App\Image\Image;
+use App\Lang\LangManager;
 
 defined('ABSPATH') OR exit;
 
@@ -235,9 +236,9 @@ class Theme{
 
 		$app_options_js = array(
 			'site_name' => esc_js(get_bloginfo( 'name' )),
-			'ajax_url' => esc_url(add_query_arg(array('lang' => $this->getCurrentLang()), admin_url( 'admin-ajax.php' ))),
+			'ajax_url' => esc_url(add_query_arg(array('lang' => LangManager::getInstance()->getCurrentLang()), admin_url( 'admin-ajax.php' ))),
 			'theme_base' => APP_LIB_URL,
-			'lang' => esc_js($this->getCurrentLang()),
+			'lang' => esc_js(LangManager::getInstance()->getCurrentLang()),
 		);
 
 		return $app_options_js;
