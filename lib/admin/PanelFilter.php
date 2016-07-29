@@ -27,7 +27,7 @@ class PanelFilter{
 
 	public function setActions(){
 
-		add_action('restrict_manage_posts', array($this, 'customPostFilter'));
+		add_action('restrict_manage_posts', array($this, 'filter'));
 
 	}
 
