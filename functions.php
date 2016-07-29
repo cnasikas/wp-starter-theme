@@ -34,6 +34,7 @@ require_once('lib/Helper.php');
 require_once('lib/QTranslate.php');
 require_once('lib/WPML.php');
 require_once('lib/LangManager.php');
+require_once('lib/admin/PanelFilter.php');
 require_once('lib/admin/Admin.php');
 require_once('lib/admin/Options.php');
 require_once('lib/Theme.php');
