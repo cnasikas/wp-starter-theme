@@ -31,7 +31,7 @@ class PanelFilter{
 
 	}
 
-	public function customPostFilter(){
+	public function filter(){
 
 		//https://wordpress.stackexchange.com/questions/578/adding-a-taxonomy-filter-to-admin-list-for-a-custom-post-type
 
