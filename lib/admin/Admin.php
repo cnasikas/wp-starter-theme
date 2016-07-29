@@ -2,6 +2,8 @@
 
 namespace App\Admin;
 
+use App\Admin\PanelFilter;
+
 defined('ABSPATH') OR exit;
 
 class Admin{
@@ -17,6 +19,20 @@ class Admin{
 		
 		$this->setActions();
 		$this->setFilters();
+
+		/*
+
+		Example of filter panel. Shows filter dropdows in admin screen of a post.
+
+		$filterArgs = array(
+				'posts' => array('student'),
+				'filters' => array('type', 'country', 'sex')
+			);
+		
+		$this->panelFilter = new PanelFilter($filterArgs);
+		$this->panelFilter->init();
+
+		*/
 
 	}
 
