@@ -53,7 +53,7 @@ class PanelFilter{
 
 		            foreach ($terms as $term) {
 		                
-		                echo '<option value=' . $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
+		                echo '<option value=' . $term->slug, (isset($_GET[$tax_slug]) && $_GET[$tax_slug] == $term->slug) ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
 		            }
 
 		        echo "</select>";
