@@ -32,7 +32,7 @@ class Menu{
 	public function getMenuTemplate($args = array()){
 
 		$defaults = array(
-			'theme_location'  => 'main_menu',
+			'theme_location'  => 'primary',
             'container' => false,
 			'menu_class' => 'main-menu',
             'depth' => 0,
