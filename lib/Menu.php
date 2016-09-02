@@ -11,7 +11,7 @@ class Menu{
 	protected static $instance = null;
 
 	public function __construct() {
-		//self::$autoLoader = new App_AutoLoader();
+		
 	}
 
 	public function init(){

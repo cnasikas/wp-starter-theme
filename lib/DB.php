@@ -117,6 +117,19 @@ class DB{
 		);
 	}
 
+	public function getPostTerm($id, $taxonomy, $object = false){
+
+		$terms = get_the_terms($id, $taxonomy);
+
+		if ( $terms && ! is_wp_error( $terms ) ){
+
+			return $object ? $terms[0] : $terms[0]->name;
+
+		}
+
+		return '';
+	}
+
 	public static function getInstance() {
 
 		if (null == self::$instance) {
