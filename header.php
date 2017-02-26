@@ -19,14 +19,12 @@ $langManager = LangManager::getInstance();
 		<meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="msapplication-tap-highlight" content="no" />
-		<link rel="apple-touch-icon" href="<?php echo APP_IMG_URL; ?>apple-touch-icon.png">
-        <link rel="icon" href="<?php echo APP_IMG_URL; ?>favicon.png">
-        <!--[if IE]>
-            <link rel="shortcut icon" href="<?php echo APP_IMG_URL; ?>favicon.ico">
-        <![endif]-->
+		<link rel="icon" href="<?php echo APP_IMG_URL; ?>favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" href="<?php echo APP_IMG_URL; ?>favicon-192x192.png" sizes="192x192" />
+        <link rel="apple-touch-icon-precomposed" href="<?php echo APP_IMG_URL; ?>favicon-192x192.png" />
+        <meta name="msapplication-TileImage" content="<?php echo APP_IMG_URL; ?>favicon-192x192.png" />
         <meta name="msapplication-TileColor" content="#FFFFFF">
-        <meta name="msapplication-TileImage" content="<?php echo APP_IMG_URL; ?>win8-tile-icon.png">
-        <title><?php wp_title(''); ?></title>
+        <title><?php wp_title(''); ?></title> <!-- Better to be handled by Yoast! -->
 		<?php wp_head(); ?>
     </head>
     <body <?php body_class(); ?>>
