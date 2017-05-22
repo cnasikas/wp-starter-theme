@@ -1,0 +1,13 @@
+{
+  "name": "katerina-labrou",
+  "homepage": "http://katlabrou.gr",
+  "authors": [
+    "Katerina Labrou"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-alpha.6",
+    "bourbon": "^4.3.4"
+  }
+}
