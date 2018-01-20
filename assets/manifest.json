@@ -6,7 +6,7 @@
         "scripts/main.js"
       ],
       "vendor": [
-        "scripts/vendor/modernizr-2.8.3.min.js"
+        "scripts/vendor/modernizr-3.50.min.js"
       ],
       "main": true
     },
@@ -24,4 +24,3 @@
     "devUrl": "http://kat.dev"
   }
 }
-

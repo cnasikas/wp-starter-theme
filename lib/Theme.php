@@ -25,13 +25,13 @@ class Theme{
 	protected static $autoLoader = null;
 
 	private static $addJQueryFallback = false;
-	
+
 	public function __construct() {
 		//self::$autoLoader = new App_AutoLoader();
 	}
 
 	public function init(){
-		
+
 		$this->setActions();
 		$this->setFilters();
 
@@ -120,13 +120,13 @@ class Theme{
 
 	public function onThemeActivation(){
 
-		
+
 
 	}
 
 	public function onThemeDeactivation(){
 
-		
+
 
 	}
 
@@ -166,7 +166,7 @@ class Theme{
 	}
 
 	public function cleanUpHTMLHead(){
-	
+
 		global $sitepress;
 
 		remove_action( 'wp_head', 'wp_generator');
@@ -182,8 +182,8 @@ class Theme{
 		remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
 		remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 		remove_action('wp_head', 'wp_oembed_add_discovery_links');
-  		remove_action('wp_head', 'wp_oembed_add_host_js');
-  		remove_action('wp_head', 'rest_output_link_wp_head', 10);
+    remove_action('wp_head', 'wp_oembed_add_host_js');
+  	remove_action('wp_head', 'rest_output_link_wp_head', 10);
 
 		if($sitepress)
 			remove_action( 'wp_head', array($sitepress, 'meta_generator_tag' ) );
@@ -234,7 +234,7 @@ class Theme{
 	  }
 
 	  if ($handle === 'jquery') {
-	    self::$addJQueryFallback = apply_filters('script_loader_src', \includes_url('/js/jquery/jquery.js'), 'jquery-fallback');
+	    self::$addJQueryFallback = apply_filters('script_loader_src', \includes_url('/js/jquery/jquery.3.2.1.min.js'), 'jquery-fallback');
 	  }
 
 	  return $src;
