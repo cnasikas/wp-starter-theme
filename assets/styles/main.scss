@@ -1,11 +1,4 @@
 @import "common/variables";
-
-// Automatically injected Bower dependencies via wiredep (never manually edit this block)
-// bower:scss
-@import "../../bower_components/bootstrap/scss/bootstrap.scss";
-@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
-// endbower
-
 @import "common/global";
 @import "components/buttons";
 @import "components/comments";

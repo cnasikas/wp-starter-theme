@@ -169,9 +169,9 @@ class Theme{
 
 		global $sitepress;
 
-		remove_action( 'wp_head', 'wp_generator');
-		remove_action( 'wp_head', 'rsd_link');
-		remove_action( 'wp_head', 'wlwmanifest_link');
+		remove_action('wp_head', 'wp_generator');
+		remove_action('wp_head', 'rsd_link');
+		remove_action('wp_head', 'wlwmanifest_link');
 		remove_action('wp_head', 'feed_links', 2);
 		remove_action('wp_head', 'index_rel_link');
 		remove_action('wp_head', 'wlwmanifest_link');
@@ -198,9 +198,12 @@ class Theme{
 
 		$this->registerJQuery();
 
-		wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
-		wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+    $ver = date("YmdHi", filemtime( get_stylesheet_directory() . '/dist/scripts/app.min.js '));
+    wp_register_script('theme', get_stylesheet_directory_uri() . '/dist/scripts/app.min.js', array('jquery'), $ver, true);
 
+    wp_enqueue_script('theme');
+    $ver = date("YmdHi", filemtime( get_stylesheet_directory() . '/dist/styles/main.css'));
+		wp_enqueue_style('theme', get_stylesheet_directory_uri() . '/dist/styles/main.css', array(), $ver);
 		wp_localize_script( 'main', 'app_options', $this->getJSVariables());
 
 	}

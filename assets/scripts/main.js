@@ -1,124 +1,109 @@
-jQuery(function($){
+jQuery(function ($) { // eslint-disable-line
+  let isTouch = Modernizr.touch, // eslint-disable-line
+    MOUSEOVER = isTouch ? 'touchstart' : 'mouseenter', // eslint-disable-line
+    MOUSEOUT = isTouch ? 'touchend' : 'mouseleave', // eslint-disable-line
+    MOUSECLICK = isTouch ? 'click' : 'click', // eslint-disable-line
+    MOUSEPRESS = isTouch ? 'touchstart' : 'mousedown', // eslint-disable-line
+    MOUSEUP = isTouch ? 'touchend' : 'mouseup', // eslint-disable-line
+    DRAG = isTouch ? 'drag' : 'mousedown', // eslint-disable-line
+    DOUBLECLICK = isTouch ? 'doubletap' : 'dblclick', // eslint-disable-line
+    ie9 = $('html').hasClass('ie9'), // eslint-disable-line
+    $window = $(window), // eslint-disable-line
+    $document = $(document), // eslint-disable-line
+    $body = $('body'), // eslint-disable-line
+    winW = $window.width(), // eslint-disable-line
+    winH = $window.height(), // eslint-disable-line
+    BASE_URL = $('base').attr('href').replace(/\/$/, ''), // eslint-disable-line
+    CURENT_URL = window.location.href.replace(/\/$/, ''), // eslint-disable-line
+    DEBUG = true // eslint-disable-line
 
-	var isTouch		    = Modernizr.touch,
-		MOUSEOVER	    = isTouch ? 'touchstart'	: 'mouseenter',
-		MOUSEOUT	    = isTouch ? 'touchend'		: 'mouseleave',
-		MOUSECLICK      = isTouch ? 'click'			: 'click',
-		MOUSEPRESS	    = isTouch ? 'touchstart'	: 'mousedown',
-		MOUSEUP		    = isTouch ? 'touchend'		: 'mouseup',
-		DRAG		    = isTouch ? 'drag'			: 'mousedown',
-		DOUBLECLICK	    = isTouch ? 'doubletap'		: 'dblclick',
-		ie9			    = $('html').hasClass('ie9'),
-		$window			= $(window),
-		$document		= $(document),
-		$body			= $('body'),
-		winW			= $window.width(),
-		winH			= $window.height(),
-		BASE_URL 		= $('base').attr('href').replace(/\/$/, "");
-		CURENT_URL 		= window.location.href.replace(/\/$/, "");
-		DEBUG 			= true;
+  $.ajaxSetup({cache: false})
 
-	$.ajaxSetup({cache: false});
+  $.app = {
 
-	$.app = {
+    options: {},
 
-		options: {},
-	
-		init: function(){
+    init: function () {
+      $.app.done()
+    },
 
-			$.app.done();
-		},
+    ajax: function (options, callback) {
+      // eslint-disable-next-line
+      var url = (typeof app_options === 'undefined' || typeof app_options.ajax_url === 'undefined') ? '' : app_options.ajax_url
 
-		ajax: function(options, callback){
+      var defaults = {
+        type: 'POST',
+        url: url,
+        dataType: 'html',
+        data: {},
+        beforeSend: function () {
+        },
+        complete: function () {
+        }
+      }
 
-			var url = (typeof app_options === "undefined" || typeof app_options.ajax_url === "undefined") ? '' : app_options.ajax_url;
+      var settings = $.extend({}, defaults, options)
 
-			var defaults = {
-				type: "POST",
-				url: url,
-				dataType: "html",
-				data: {},
-				beforeSend: function(){
-			  		
-			   	},
-			  	complete: function(){
-			    	
-			    }
-	        };
+      $.ajax(settings)
+      .done(function (data) {
+        if (callback && typeof callback === 'function') {
+          callback(data)
+        }
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
 
-	        var settings = $.extend({}, defaults, options);
+      })
+    },
 
-			$.ajax(settings)
-			.done(function(data) {
+    setFlexSlider: function ($target, options) {
+      options = options || {}
 
-				if(callback && typeof callback === "function")
-					callback(data);
+      var defaults = {
+        animation: 'slide',
+        animationLoop: false,
+        slideshow: false,
+        controlNav: false
+      }
 
-			})
-			.fail(function(jqXHR, textStatus, errorThrown) {
-			    
-			});
+      var settings = $.extend({}, defaults, options)
 
-		},
+      $target.flexslider(settings)
+    },
 
-		setFlexSlider: function($target, options){
+    setActions: function () {
 
-			options = options || {};
+    },
 
-			var defaults = {
-				animation: "slide",
-				animationLoop: false,
-				slideshow: false,
-				controlNav: false
-	        };
+    scrollTo: function ($to, time) {
+      $('html, body').animate({scrollTop: $to.offset().top}, time)
+    },
 
-	        var settings = $.extend({}, defaults, options);
+    sendGA: function (url) {
+      // eslint-disable-next-line
+      ga('send', 'pageview', {
+        'page': url
+      })
+    },
 
-			$target.flexslider(settings);
+    done: function () {
+      $.app.setActions()
+    },
 
-		},
+    afterLoad: function () {
 
-		setActions: function(){
+    },
 
-		},
+    resize: function (event) {
+      winW = $window.width()
+      winH = $window.height()
+    }
 
-		scrollTo: function($to, time){
+  } // end of app object
 
-			$('html, body').animate({scrollTop:$to.offset().top}, time);
+  $window.on('debouncedresize', function (event) { $.app.resize(event) })
+  // $window.resize(function(event) {$.app.resize(event);});
 
-		},
+  $window.load(function () { $.app.afterLoad() })
 
-		sendGA: function(url){
-			
-			ga('send', 'pageview', {
-				'page': url
-			});
-			
-		},
-
-		done: function(){
-			$.app.setActions();
-		},
-		
-		afterLoad: function(){
-
-		},
-		
-		resize: function(event){
-
-			winW = $window.width();
-			winH = $window.height();
-			
-		}
-		
-
-	}; //end of app object
-
-	$window.on('debouncedresize', function(event){ $.app.resize(event); });
-	//$window.resize(function(event) {$.app.resize(event);});
-	
-	$window.load(function() {$.app.afterLoad();});
-	
-	$.app.init();
-
-});
+  $.app.init()
+})
