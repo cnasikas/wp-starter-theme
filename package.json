@@ -1,8 +1,8 @@
 {
-  "name": "katerina-lambrou",
-  "version": "1.0.0",
-  "author": "Katerina Lambrou",
-  "homepage": "http://katerinalambrou.gr",
+  "name": "App",
+  "version": "0.0.1",
+  "author": "cnasikas",
+  "homepage": "http://wp.dev",
   "private": true,
   "licenses": [
     {

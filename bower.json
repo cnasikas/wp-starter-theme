@@ -1,8 +1,8 @@
 {
-  "name": "katerina-labrou",
-  "homepage": "http://katlabrou.gr",
+  "name": "App",
+  "homepage": "http://wp.dev",
   "authors": [
-    "Katerina Labrou"
+    "cnasikas"
   ],
   "license": "MIT",
   "private": true,
