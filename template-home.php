@@ -3,13 +3,13 @@
 defined('ABSPATH') OR exit;
 
 /*
-Template Name: Students Page
+Template Name: Home Page
 */
 
 ?>
 
 <?php get_header(); ?>
-	
-	
+
+
 
 <?php get_footer(); ?>
