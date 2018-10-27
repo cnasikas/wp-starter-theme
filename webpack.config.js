@@ -4,12 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const settings = {
-  host: 'localhost',
-  port: 3333,
-  proxy: 'wptest.dev',
-  urlOverride: /wptest.dev/g
-}
+const config = require('./config.js')
 
 module.exports = {
   entry: {
@@ -98,9 +93,9 @@ module.exports = {
       allChunks: true
     }),
     new BrowserSyncPlugin({
-      host: settings.host,
-      port: settings.port,
-      proxy: settings.proxy,
+      host: config.host,
+      port: config.port,
+      proxy: config.proxy,
       files: [
         {
           match: [
@@ -110,9 +105,9 @@ module.exports = {
       ],
       rewriteRules: [
         {
-          match: settings.urlOverride,
+          match: config.urlOverride,
           fn: function (req, res, match) {
-            return settings.host + ':' + settings.port
+            return config.host + ':' + config.port
           }
         }
       ]
