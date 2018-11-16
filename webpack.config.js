@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 const config = require('./config.js')
 
@@ -85,6 +86,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new Dotenv(),
     new CleanWebpackPlugin(['dist']),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
